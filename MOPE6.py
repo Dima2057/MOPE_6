@@ -7,7 +7,6 @@ from numpy.linalg import solve
 from math import fabs
 from random import randrange
 
-
 # Пошук критеріїв
 class Criteries:
     @staticmethod
@@ -281,7 +280,7 @@ while check:
         dispersion_ad = 0
         f4 = N - d
         for row in range(len(Yavg)):
-            dispersion_ad += (m * (X[i] - Yavg[row])) / (N - d)
+            dispersion_ad += (m * (X[i] - Yavg[row])**2) / (N - d)
         F_practice = dispersion_ad / dispersion_b2
         F_theoretical = cr.get_fisher_value(f3, f4, q)
         return F_practice < F_theoretical
@@ -293,3 +292,14 @@ while check:
         print("Рівняння регресії адекватне стосовно оригіналу")
     else:
         print("Рівняння регресії неадекватне стосовно оригіналу")
+
+#=====================Додаткове завдання==========================
+    counter = 0
+    counter2 = 0
+    for number in range(100):
+        if fisher_test():
+            counter += 1
+        else:
+            counter2 += 1
+    print(counter)
+    print(counter2)
